@@ -1,0 +1,115 @@
+<style>a.no-underline {
+  text-decoration: none;
+}
+</style>
+<a href="index.html" class="no-underline"><-返回</a>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>刷新率测试</title>  
+<style>  
+  #counter {  
+    font-size: 2em;  
+    text-align: center;  
+    margin-top: 20%;  
+  }  
+  #refresh-rate-input {  
+    width: 200px;  
+    margin-bottom: 20px;  
+  }  
+</style>  
+</head>  
+<body>  
+    <center>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+<!-- <label for="refresh-rate-input">输入刷新率 (Hz):</label>   -->
+<mdui-text-field class="sss" label="输入刷新率 (Hz)" type="number" id="refresh-rate-input" min="1" value="60"> </mdui-text-field>
+<br>
+<mdui-button onclick="startCounter()">开始</mdui-button>  
+<mdui-button onclick="stopCounter()">停止</mdui-button>  
+</center>
+<div id="counter">0</div>  
+  
+<script>  
+let counter = 0;  
+let intervalId;  
+let refreshRate;  
+  
+function startCounter() {  
+  // 获取用户输入的刷新率  
+  refreshRate = parseInt(document.getElementById('refresh-rate-input').value, 10);  
+  if (isNaN(refreshRate) || refreshRate <= 0) {  
+    alert('请输入一个有效的刷新率（正整数）！');  
+    return;  
+  }  
+  
+  // 清除之前的计数器（如果存在）  
+  stopCounter();  
+  
+  // 开始新的计数器  
+  intervalId = setInterval(() => {  
+    // 更新计数器  
+    counter = (counter + 1) % (refreshRate + 1);  
+    document.getElementById('counter').textContent = counter;  
+  }, 1000 / refreshRate); // 假设的刷新率间隔（毫秒）  
+}  
+  
+function stopCounter() {  
+  clearInterval(intervalId);  
+  counter = 0; // 重置计数器  
+  document.getElementById('counter').textContent = counter;  
+}  
+  
+// 监听输入框变化，但不自动开始计数器  
+document.getElementById('refresh-rate-input').addEventListener('input', function() {  
+  // 可以在这里添加验证逻辑，但不会自动开始计数  
+});  
+
+  addEventListener("click", () => snackbar.open = true);
+</script>  
+
+  
+
+  
+<script>  
+  document.addEventListener('DOMContentLoaded', function() {  
+    const dialog = document.querySelector(".example-headline");  
+    // 页面加载完成后直接打开对话框  
+    dialog.open = true;  
+  
+    const openButton = dialog.nextElementSibling;  
+    openButton.addEventListener("click", () => dialog.open = true);  
+  });  
+</script>
+</body>  
+</html>
+<style type="text/css">
+    body {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    #footer {
+        height: 40px;
+        line-height: 40px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        
+        color: #333;
+        font-family: Arial;
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    .content {
+        height: 1800px;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<div id="footer">作者：哔哩哔哩 小小杨Official</div>
